@@ -1,26 +1,62 @@
 .App {
-    font-family: 'Open Sans', sans-serif;
+  header {
+    .account-action-container {
+      font-size: 14px;
+      width: 100%;
+      color: #ffffff;
+      background-color: #231f20;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      a {
+        font-weight: 800;
+        color: #ffffff;
+      }
+    }
+    .logo-container-mobile {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 16px 20px;
+    }
+    .logo-container-desktop {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .App {
     header {
-        .account-action-container {
-            font-size: 14px;
-            width: 100%;
-            color: #FFFFFF;
-            background-color: #231F20;
-            height: 30px;
+      .account-action-container {
+        height: 40px;
+        font-size: 16px;
+        justify-content: end;
+        width: 100%;
+        p {
+          margin-right: 20px;
+        }
+      }
+      .logo-container-mobile {
+        display: none;
+      }
+      .logo-container-desktop {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 16px 20px;
+        .search-input {
             display: flex;
             align-items: center;
             justify-content: center;
-            a {
-                font-weight: 800;
-                color: #FFFFFF;
-            }
+          input {
+            width: 400px;
+            height: 40px;
+            border: solid 1px #959595;
+          }
         }
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 16px 20px;
-            
-        }
+      }
     }
+  }
 }

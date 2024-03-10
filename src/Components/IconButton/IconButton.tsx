@@ -7,7 +7,9 @@ interface Props {
 }
 
 export const IconButton = ({ children, onClick }: Props) => {
-  return <button className="icon-button-container" onClick={onClick}>
-    {children}
-  </button>;
+  return (
+    <button className="icon-button-container" onClick={onClick}>
+      {children}
+    </button>
+  );
 };
