@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
+import { GenericStatusType } from "../Utils";
 
 export interface Category {
   id: number;
@@ -9,12 +10,16 @@ export interface Category {
 
 export interface CategoriesSlice {
   items: Category[];
-  isLoading: boolean;
+  responseStatus: GenericStatusType;
 }
 
 const initialState: CategoriesSlice = {
   items: [],
-  isLoading: false,
+  responseStatus: {
+    loading: false,
+    success: false,
+    error: false,
+  },
 };
 
 export const fetchCategories = createAsyncThunk(
@@ -36,15 +41,27 @@ const categoriesSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchCategories.pending, (state) => {
       state.items = [];
-      state.isLoading = true;
+      state.responseStatus = {
+        loading: true,
+        success: false,
+        error: false,
+      };
     });
     builder.addCase(fetchCategories.fulfilled, (state, action) => {
       state.items = action.payload.items;
-      state.isLoading = false;
+      state.responseStatus = {
+        loading: false,
+        success: true,
+        error: false,
+      };
     });
     builder.addCase(fetchCategories.rejected, (state) => {
       state.items = [];
-      state.isLoading = false;
+      state.responseStatus = {
+        loading: false,
+        success: false,
+        error: true,
+      }
     });
   },
 });
