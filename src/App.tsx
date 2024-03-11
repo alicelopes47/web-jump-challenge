@@ -10,6 +10,8 @@ import { TfiMenu } from "react-icons/tfi"
 import { IoIosSearch } from "react-icons/io"
 import { RegularButton } from "./Components/RegularButton/RegularButton"
 import { Menu } from "./Components/Menu/Menu"
+import { Home } from "./pages/Home"
+import { MainLayout } from "./Components/MainLayout"
 
 function App() {
   const dispatch = useDispatch<AppDispatch>()
@@ -32,7 +34,6 @@ function App() {
             </p>
           </div>
           <div className="logo-container-mobile">
-            {/* Repensar isso aqui */}
             <IconButton onClick={() => setShowMenu(true)}>
               <TfiMenu />
             </IconButton>
@@ -44,18 +45,27 @@ function App() {
           <div className="logo-container-desktop">
             <img src={Logo} alt="Logo" />
             <div className="search-input">
-              <input type="text" /> {/* This input should be a component */}
+              <input type="text" />
               <RegularButton label="BUSCAR" />
             </div>
           </div>
         </header>
-
-        <Menu visible={showMenu} onClickCloseButton={() => setShowMenu(false)}  />
-
-        <Routes>
-          <Route path="/" />
-          <Route path="/calcados" />
-        </Routes>
+        <main>
+          <Menu visible={showMenu} onClickCloseButton={() => setShowMenu(false)} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/calcados" />
+          </Routes>
+        </main>
+        <footer>
+            <p>Teste avaliativo para vaga - WEBJUMP</p>
+            <p>
+              Desenvolvido por <a href="https://github.com/alicelopes47" target="_blank">Alice Lopes da Silva</a>
+            </p>
+            <p>
+            <a href="mailto:lopesalice4745@gmail.com">lopesalice4745@gmail.com</a>
+            </p>
+        </footer>
       </div>
     </Router>
   )
