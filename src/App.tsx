@@ -11,10 +11,11 @@ import { IoIosSearch } from "react-icons/io"
 import { RegularButton } from "./Components/RegularButton/RegularButton"
 import { Menu } from "./Components/Menu/Menu"
 import { Home } from "./pages/Home"
-import { MainLayout } from "./Components/MainLayout"
+import { ItemsList } from "./pages/ItemsList"
 
 function App() {
   const dispatch = useDispatch<AppDispatch>()
+  const categories = useSelector((state: RootState) => state.categoriesSlice.categories)
   const responseStatus = useSelector((state: RootState) => state.categoriesSlice.responseStatus)
   const [showMenu, setShowMenu] = useState(false)
 
@@ -50,21 +51,28 @@ function App() {
             </div>
           </div>
         </header>
+
         <main>
           <Menu visible={showMenu} onClickCloseButton={() => setShowMenu(false)} />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/calcados" />
+            {categories.map((category) => (
+              <Route key={category.id} path={`/${category.path}`} element={<ItemsList />} />
+            ))}
           </Routes>
         </main>
+
         <footer>
-            <p>Teste avaliativo para vaga - WEBJUMP</p>
-            <p>
-              Desenvolvido por <a href="https://github.com/alicelopes47" target="_blank">Alice Lopes da Silva</a>
-            </p>
-            <p>
+          <p>Teste avaliativo para vaga - WEBJUMP</p>
+          <p>
+            Desenvolvido por
+            <a href="https://github.com/alicelopes47" target="_blank">
+              Alice Lopes da Silva
+            </a>
+          </p>
+          <p>
             <a href="mailto:lopesalice4745@gmail.com">lopesalice4745@gmail.com</a>
-            </p>
+          </p>
         </footer>
       </div>
     </Router>

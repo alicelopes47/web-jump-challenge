@@ -1,9 +1,19 @@
 .regular-button {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
-  height: 44px;
-  width: 110px;
   font-weight: 800;
-  background-color: #cb0d1f;
   color: #ffffff;
+  cursor: pointer;
+  &.primary {
+    background-color: #cb0d1f;
+    height: 44px;
+    width: 110px;
+  }
+  &.secondary {
+    background-color: #00A8A9;
+    font-size: 18px;
+    border-radius: 5px;
+    height: 40px;
+    width: 70%;
+  }
 }
