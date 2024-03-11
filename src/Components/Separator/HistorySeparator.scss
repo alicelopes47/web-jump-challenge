@@ -1,0 +1,17 @@
+.history-separator {
+  display: flex;
+  gap: 5px;
+  padding-left: 30px;
+  font-size: 14px;
+  .first-page {
+    color: #00a8a9;
+  }
+  .separator {
+    color: #acacac;
+    font-weight: 400;
+  }
+  .second-page {
+    color: #cb0d1f;
+  }
+  margin-bottom: 16px;
+}

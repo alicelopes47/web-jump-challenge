@@ -12,6 +12,9 @@ import { RegularButton } from "./Components/RegularButton/RegularButton"
 import { Menu } from "./Components/Menu/Menu"
 import { Home } from "./pages/Home"
 import { ItemsList } from "./pages/ItemsList"
+import { Sidebar } from "./Components/Sidebar"
+import { Separator } from "./Components/Separator/HistorySeparator"
+import { MainLayout } from "./Components/MainLayout"
 
 function App() {
   const dispatch = useDispatch<AppDispatch>()
@@ -54,10 +57,28 @@ function App() {
 
         <main>
           <Menu visible={showMenu} onClickCloseButton={() => setShowMenu(false)} />
+          <Separator />
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route
+              path="/"
+              element={
+                <MainLayout>
+                  <Sidebar />
+                  <Home />
+                </MainLayout>
+              }
+            />
             {categories.map((category) => (
-              <Route key={category.id} path={`/${category.path}`} element={<ItemsList />} />
+              <Route
+                key={category.id}
+                path={`/${category.path}`}
+                element={
+                  <MainLayout>
+                    <Sidebar />
+                    <ItemsList />
+                  </MainLayout>
+                }
+              />
             ))}
           </Routes>
         </main>
@@ -65,7 +86,7 @@ function App() {
         <footer>
           <p>Teste avaliativo para vaga - WEBJUMP</p>
           <p>
-            Desenvolvido por
+            Desenvolvido por{" "}
             <a href="https://github.com/alicelopes47" target="_blank">
               Alice Lopes da Silva
             </a>

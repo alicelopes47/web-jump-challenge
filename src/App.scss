@@ -59,7 +59,7 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin: 16px 30px;
+        margin: 16px 20px;
         .search-input {
             display: flex;
             align-items: center;
@@ -74,8 +74,7 @@
     }
     footer {
       align-items: start;
-      padding: 0 30px;
-      height: 15vh;
+      padding: 10px 30px;
       font-size: 16px;
       a {
         color: white;

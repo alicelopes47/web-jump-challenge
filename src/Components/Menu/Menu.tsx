@@ -4,7 +4,7 @@ import "./Menu.scss"
 import { IconButton } from "../IconButton/IconButton"
 import { TfiClose } from "react-icons/tfi"
 import { useNavigate } from 'react-router-dom';
-import { Category, fetchItems, setSelectedCategory } from "../../slices/categoriesSlice"
+import { Category, clearSelectedCategory, fetchItems, setSelectedCategory } from "../../slices/categoriesSlice"
 
 interface Props {
   visible: boolean
@@ -22,6 +22,11 @@ export const Menu = ({ visible, onClickCloseButton }: Props) => {
     dispatch(setSelectedCategory(category))
   }
 
+  const handleClickHome = () => {
+    navigate(`/`)
+    dispatch(clearSelectedCategory())
+  }
+
   return (
     <>
       <div className={`menu-container ${visible ? "menu-container-active" : "menu-container-hide"}`}>
@@ -29,7 +34,7 @@ export const Menu = ({ visible, onClickCloseButton }: Props) => {
           <IconButton extraClass="mobile-close-button" onClick={onClickCloseButton}>
             <TfiClose color="white" />
           </IconButton>
-          <li onClick={() => navigate('/')}>PÁGINA INICIAL</li>
+          <li onClick={handleClickHome}>PÁGINA INICIAL</li>
           {categories.map((category) => (
             <li onClick={() => handleClick(category)} key={category.id}>
               {category.name.toUpperCase()}
