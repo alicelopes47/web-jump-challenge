@@ -10,9 +10,9 @@ export const ItemsList = () => {
 
   return (
     <>
-      <div className="items-list-container">
+      <div className="items-list">
         <h1>{selectedCategory?.name}</h1>
-        <div className="items-list">
+        <div className="items-list-container">
           {items?.map((item) => (
             <div key={item.id} className="item">
               <img src={`/${item.image}`} alt={item.name} />

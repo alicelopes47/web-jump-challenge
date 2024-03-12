@@ -2,7 +2,7 @@ import { FaSquare } from "react-icons/fa"
 import { useSelector } from "react-redux"
 import { RootState } from "../../Store"
 import { IconButton } from "../IconButton/IconButton"
-import './Filters.scss'
+import './FiltersMenu.scss'
 
 export const Filters = () => {
   const filters = useSelector((state: RootState) => state.categoriesSlice.filters)

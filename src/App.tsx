@@ -28,74 +28,76 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        {responseStatus.loading && <div>Loading...</div>}
-
-        <header>
-          <div className="account-action-container">
-            <p>
-              <a href="">Acesse sua Conta</a> ou <a href="">Cadastre-se</a>
-            </p>
-          </div>
-          <div className="logo-container-mobile">
-            <IconButton onClick={() => setShowMenu(true)}>
-              <TfiMenu />
-            </IconButton>
-            <img src={Logo} alt="Logo" />
-            <IconButton>
-              <IoIosSearch color="#CB0D1F" />
-            </IconButton>
-          </div>
-          <div className="logo-container-desktop">
-            <img src={Logo} alt="Logo" />
-            <div className="search-input">
-              <input type="text" />
-              <RegularButton label="BUSCAR" />
+      {responseStatus.loading ? (
+        <div>Carregando</div>
+      ) : (
+        <div className="App">
+          <header>
+            <div className="account-action-container">
+              <p>
+                <a href="">Acesse sua Conta</a> ou <a href="">Cadastre-se</a>
+              </p>
             </div>
-          </div>
-        </header>
+            <div className="logo-container-mobile">
+              <IconButton onClick={() => setShowMenu(true)}>
+                <TfiMenu />
+              </IconButton>
+              <img src={Logo} alt="Logo" />
+              <IconButton>
+                <IoIosSearch color="#CB0D1F" />
+              </IconButton>
+            </div>
+            <div className="logo-container-desktop">
+              <img src={Logo} alt="Logo" />
+              <div className="search-input">
+                <input type="text" />
+                <RegularButton label="BUSCAR" />
+              </div>
+            </div>
+          </header>
 
-        <main>
-          <Menu visible={showMenu} onClickCloseButton={() => setShowMenu(false)} />
-          <Separator />
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <MainLayout>
-                  <Sidebar />
-                  <Home />
-                </MainLayout>
-              }
-            />
-            {categories.map((category) => (
+          <main>
+            <Menu visible={showMenu} onClickCloseButton={() => setShowMenu(false)} />
+            <Separator />
+            <Routes>
               <Route
-                key={category.id}
-                path={`/${category.path}`}
+                path="/"
                 element={
                   <MainLayout>
                     <Sidebar />
-                    <ItemsList />
+                    <Home />
                   </MainLayout>
                 }
               />
-            ))}
-          </Routes>
-        </main>
+              {categories.map((category) => (
+                <Route
+                  key={category.id}
+                  path={`/${category.path}`}
+                  element={
+                    <MainLayout>
+                      <Sidebar />
+                      <ItemsList />
+                    </MainLayout>
+                  }
+                />
+              ))}
+            </Routes>
+          </main>
 
-        <footer>
-          <p>Teste avaliativo para vaga - WEBJUMP</p>
-          <p>
-            Desenvolvido por{" "}
-            <a href="https://github.com/alicelopes47" target="_blank">
-              Alice Lopes da Silva
-            </a>
-          </p>
-          <p>
-            <a href="mailto:lopesalice4745@gmail.com">lopesalice4745@gmail.com</a>
-          </p>
-        </footer>
-      </div>
+          <footer>
+            <p>Teste avaliativo para vaga - WEBJUMP</p>
+            <p>
+              Desenvolvido por{" "}
+              <a href="https://github.com/alicelopes47" target="_blank">
+                Alice Lopes da Silva
+              </a>
+            </p>
+            <p>
+              <a href="mailto:lopesalice4745@gmail.com">lopesalice4745@gmail.com</a>
+            </p>
+          </footer>
+        </div>
+      )}
     </Router>
   )
 }

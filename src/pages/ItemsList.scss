@@ -1,42 +1,51 @@
-.items-list-container {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
+.items-list {
+  width: 100%;
+
   h1 {
     font-size: 32px;
     margin-bottom: 16px;
     color: #ed1a39;
     font-weight: 400;
   }
-  .items-list {
+
+  .items-list-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
     width: 100%;
     align-items: center;
-    justify-content: space-between;
+    justify-content: start;
+
     .regular-button {
       display: none;
     }
+
     .item {
+      width: 50%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
+
       .item-name {
         color: #626262;
         font-size: 12px;
-        font-family: 400;
+        font-weight: 400;
         margin-top: 10px;
         margin-bottom: 16px;
+        text-align: center;
       }
+
       .item-price {
         color: #1e2b50;
         font-family: 800;
         font-size: 21px;
         margin-bottom: 10px;
       }
+
       img {
+        width: 120px;
+        height: 120px;
+        border: solid #e2dedc 1px;
         object-fit: cover;
       }
     }
@@ -44,24 +53,22 @@
 }
 
 @media (min-width: 768px) {
-  .items-list-container {
-    width: 100%;
-    h1 {
-      font-size: 32px;
-      margin-bottom: 16px;
-      color: #ed1a39;
-      font-weight: 400;
-    }
-    .items-list {
-      width: 100%;
+  .items-list {
+    .items-list-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+      gap: 20px;
+
       .regular-button {
         display: block;
       }
+
       .item {
-        width: 20%;
+        width: 100%;
         img {
           object-fit: cover;
-          border: solid #e2dedc 1px;
+          width: 100%;
+          height: 200px;
         }
       }
     }
